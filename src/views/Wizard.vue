@@ -1,6 +1,5 @@
 <template>
   <div>
-    CoverGo Wizard
     <intro />
   </div>
 </template>
@@ -10,7 +9,7 @@ import { ref } from 'vue'
 import Intro from '@/components/Intro.vue';
 import { useRoute, useRouter } from 'vue-router'
 import { COUNTRY_CURRENCY_MAP } from '@/constants';
-console.log({COUNTRY_CURRENCY_MAP})
+
 const router = useRouter();
 const route = useRoute();
 
@@ -23,14 +22,15 @@ const fields = {
     },
     age: {
         label: 'Age',
-        value: ''
+        value: null
     },
     location: {
         label: 'Country',
         value: 'Hong Kong'
     },
 }
-const steps = ref([
+const page = ref(0);
+const pages = ref([
     'intro',
     'step-1',
     'summary'
