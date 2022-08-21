@@ -1,5 +1,5 @@
 <template>
-    <div class="w-[50%] mx-auto mt-20 text-center px-7 pt-6 pb-20 bg-gray-300 rounded-lg">
+    <div class="w-[700px] mx-auto mt-20 text-center px-7 pt-6 pb-20 bg-gray-300 rounded-lg">
         <div class="font-bold text-2xl mb-5">Tell us about yourself</div>
 
         <div class="text-sm mb-5">
