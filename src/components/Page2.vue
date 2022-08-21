@@ -1,5 +1,5 @@
 <template>
-    <div class="w-[70%] mx-auto mt-20 text-center px-7 pt-6 pb-20 bg-gray-300 rounded-lg">
+    <div class="w-[50%] mx-auto mt-20 text-center px-7 pt-6 pb-20 bg-gray-300 rounded-lg">
         <div class="font-bold text-2xl mb-5">Tell us about yourself</div>
 
         <div class="text-sm mb-5">
@@ -47,12 +47,12 @@
             <Button
                 class="w-[100px]"
                 @click="onNext"
+                :disabled="isNextDisabled"
                 size='lg'
                 variant='primary'
             >
                 Next
             </Button>
-        
         </div>
     </div>
 </template>
@@ -81,6 +81,7 @@ const adjustedPremium = computed<number>(() => premium.value*currentPackageRate.
 const currentCurrency = computed<string>(() => COUNTRY_CURRENCY_MAP[fields.value.location].currency);
 const currentLocationRate = computed<number>(() => COUNTRY_CURRENCY_MAP[fields.value.location].rate);
 const currentPackageRate = computed<number>(() => PACKAGES[fields.value.package].rate);
+const isNextDisabled = computed<boolean>(() => Object.values(fields.value).some(val => val === 0 || val === ''));
 
 const packageDescription = (packageItem) => {
     if(packageItem === fields.value.package) return '';
@@ -91,18 +92,13 @@ const packageDescription = (packageItem) => {
     const percentageDiff = ((packagePremium/premium.value)-1)*100;
     return `(${sign}${pageagePremiumDiff}${currentCurrency.value}, ${percentageDiff}%)`;
 }
-watch(premium, () => {
-    console.log('premium: ', premium.value);
-})
-watch(() => ({ ...fields.value }), () => {
-  console.log('fields: ', fields.value)
-}, { immediate: true });
+
 const onBack = () => {
     emit('back');
 }
 const onNext = () => {
-    console.log('fields: ', fields.value)
-    emit('next');
+    const payload = Object.assign({}, fields.value, { premium: adjustedPremium.value });
+    emit('next', payload);
 }
 
 </script>

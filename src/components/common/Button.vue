@@ -41,7 +41,7 @@ const onClick = () => {
 
 <script lang="ts">
 export default {
-  name: 'DButton',
+  name: 'Button',
 };
 </script>
 
@@ -50,7 +50,7 @@ export default {
   @apply max-h-10 font-bold transition-all;
 
   &:disabled {
-    @apply opacity-5;
+    @apply cursor-not-allowed
   }
   &.btn-medium {
     @apply max-h-8 py-2 px-3;
