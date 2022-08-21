@@ -22,7 +22,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   variant: 'default',
-  size: 'md',
+  size: 'lg',
   disabled: false,
 });
 
@@ -47,51 +47,27 @@ export default {
 
 <style lang="scss" scoped>
 .btn {
-  max-height: 40px;
-  @apply font-bold transition-all;
+  @apply max-h-10 font-bold transition-all;
 
   &:disabled {
-    opacity: 0.5;
+    @apply opacity-5;
   }
   &.btn-medium {
-    max-height: 32px !important;
-    padding: 6px 12px !important;
-  }
-  &.btn-primary {
-    &.btn-outline {
-      border: 1px solid var(--blue-800);
-      color: var(--blue-800);
-      background: transparent;
-      .icon {
-        background: var(--blue-800);
-      }
-      &:disabled {
-        border-color: var(--neutral-400);
-        color: var(--neutral-400);
-      }
-    }
-    &.btn-transparent {
-      border: none;
-      color: var(--blue-800);
-      background: transparent;
-      padding: 10px 8px !important;
-      &:disabled {
-        border-color: var(--neutral-400);
-        color: var(--neutral-400);
-      }
-    }
+    @apply max-h-8 py-2 px-3;
   }
 }
-
 .btn-md {
-  max-height: 32px !important;
-  padding: 6px 12px !important;
+    @apply max-h-8 py-2 px-3;
 }
 .btn-lg {
   @apply py-[10px] px-4;
 }
+
 .btn-default {
-  @apply border border-2 border-blue-800;
-  @apply hover:bg-neutral-500;
+  @apply border border-2 border-black bg-white;
+  @apply hover:bg-gray-400;
+}
+.btn-primary {
+    @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
 }
 </style>
