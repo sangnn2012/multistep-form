@@ -28,7 +28,7 @@ import Page1 from '@/components/Page1.vue';
 import Page2 from '@/components/Page2.vue';
 import Page3 from '@/components/Page3.vue';
 import { useRoute, useRouter } from 'vue-router'
-import { COUNTRY_CURRENCY_MAP } from '@/constants';
+import { COUNTRY_CURRENCY_MAP } from '@/constants/index';
 import { Form } from '@/types';
 
 const router = useRouter();
@@ -36,7 +36,13 @@ const route = useRoute();
 
 const { hash } = route;
 
-const fields = ref<Form>({});
+const fields = ref<Form>({
+    name: '',
+    age: 0,
+    location: 'Hong Kong',
+    package: 'standard'
+});
+
 const currentPage = ref(0);
 const resetPage = () => {
     currentPage.value = 0;
@@ -50,7 +56,7 @@ const nextPage = () => {
 const handleStart = () => {
     currentPage.value = 1;
 }
-const handleNext = (fieldsSubmitted) => {
+const handleNext = (fieldsSubmitted: Form) => {
     if (fieldsSubmitted.age > 100) {
         return router.push({name: 'WizardError'});
     }

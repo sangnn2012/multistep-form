@@ -6,4 +6,5 @@ export interface Form {
     age: number,
     location: Location,
     package: Package,
+    premium?: number
 }

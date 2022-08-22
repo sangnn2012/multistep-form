@@ -6,7 +6,7 @@
             <div class="mb-4">Name: {{ summary.name }}</div>
             <div class="mb-4">Age: {{ summary.age }}</div>
             <div class="mb-4">Where you live: {{ summary.location }}</div>
-            <div class="mb-4">Package: {{ summary.package }}</div>
+            <div class="mb-4 capitalize">Package: {{ summary.package }}</div>
             <div class="mb-4">Premium: {{ `${summary.premium}${currency}` }}</div>
         </div>
         <!-- Button wrapper -->
@@ -43,7 +43,7 @@ interface Props {
 
 const emit = defineEmits(['buy', 'back']);
 const props = defineProps<Props>();
-const currency = computed<Currency>(() => COUNTRY_CURRENCY_MAP[props.summary.location].currency);
+const currency = computed<string>(() => COUNTRY_CURRENCY_MAP[props.summary.location].currency);
 
 const onBack = () => {
     emit('back');

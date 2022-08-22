@@ -1,8 +1,8 @@
-import { createWebHistory, createRouter } from "vue-router";
+import { createWebHistory, createRouter, RouteRecordRaw } from "vue-router";
 import Wizard from '@/views/Wizard.vue';
 import WizardError from '@/components/WizardError.vue';
 
-const routes = [
+const routes: RouteRecordRaw[] = [
     {
         path: "/",
         name: "Home",
@@ -11,12 +11,12 @@ const routes = [
     {
         path: "/wizard",
         name: "Wizard",
-        component: Wizard,
+        component: () => import('@/views/Wizard.vue'),
     },
     {
         path: "/error",
         name: "WizardError",
-        component: WizardError,
+        component: () => import('@/views/WizardError.vue'),
     }
 ];
 

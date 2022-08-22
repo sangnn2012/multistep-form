@@ -83,7 +83,7 @@ const currentLocationRate = computed<number>(() => COUNTRY_CURRENCY_MAP[fields.v
 const currentPackageRate = computed<number>(() => PACKAGES[fields.value.package].rate);
 const isNextDisabled = computed<boolean>(() => Object.values(fields.value).some(val => val === 0 || val === ''));
 
-const packageDescription = (packageItem) => {
+const packageDescription = (packageItem: string) => {
     if(packageItem === fields.value.package) return '';
     const rate = PACKAGES[packageItem].rate - PACKAGES[fields.value.package].rate;
     const packagePremium = premium.value*(1 + rate);
