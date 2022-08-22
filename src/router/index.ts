@@ -1,6 +1,4 @@
 import { createWebHistory, createRouter, RouteRecordRaw } from "vue-router";
-import Wizard from '@/views/Wizard.vue';
-import WizardError from '@/components/WizardError.vue';
 
 const routes: RouteRecordRaw[] = [
     {
